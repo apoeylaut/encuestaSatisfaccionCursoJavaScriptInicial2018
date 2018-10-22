@@ -155,14 +155,20 @@ function pagina(hPagina) {
 	this.secciones = [];
 	// Itera por los elementos en el arreglo en la propiedad "secciones" del argumento recibido
 	// TODO: Iterar por los elementos en el arreglo en la propiedad "secciones" del argumento recibido
+	for(var i = 0; i < hPagina.secciones.length; i++)
+	{
 		// Por cada elemento iterado crea un objeto "seccion", enviando el elemento iterado como argumento
 		// TODO: Crear objeto "seccion" enviando el elemento iterado como argumento
 		// Agrega el objeto creado al arreglo en la propiedad "secciones"
 		// TODO: Agregar objeto creado al arreglo en la propiedad "secciones"
+		this.secciones.push(new seccion(hPagina.secciones[i]));
+	}
 	// Asigna a la propiedad "id" el valor en la variable global "idPagina"
 	// TODO: Asignar a la proiedad "id" el valor en la variable global "idPagina"
+	this.id = idPagina;
 	// Incrementa el valor de la variable global "idPagina"
 	// TODO: Incrementar el valor de la variable global "idPagina"
+	idPagina++;
 }
 pagina.prototype.obtieneDiv = function() {
 	// Crea un elemento HTML "div"
