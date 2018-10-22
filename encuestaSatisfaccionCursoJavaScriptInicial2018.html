@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <title>Encuesta Satisfaccion Curso JavaScript Inicial 2018</title>
 <script>
+// Declara y asigna la variable con los datos iniciales
 var hEncuesta = {paginas: [{
 	secciones: [{
-		nombre: null
+		nombre: 'Conclusiones'
 		, preguntas: [{
 			nombre: 'Apellido y Nombre'
 			, tipo: 'text', obligatoria: false
@@ -75,201 +76,339 @@ var hEncuesta = {paginas: [{
 		}]
 	}]
 }]};
+// Declara y asigna variables globales
 var oEncuesta;
 var idPregunta = 0;
 var idPagina = 0;
+
+// Inicia el objeto encuesta
 function iniciaEncuesta() {
-	console.log('Iniciando encuesta...');
+	console.group('Iniciando encuesta...');
 	oEncuesta = new encuesta(hEncuesta);
 	oEncuesta.agregaPaginas();
 	oEncuesta.muestraPagina(0);
+	console.groupEnd('Iniciando encuesta...');
 }
 
+// Objeto encuesta
 function encuesta(hEncuesta) {
+	// Asigna el elemento HTML a la propiedad "div" del objeto
 	this.div = document.getElementById('divEncuesta');
+	// Declara la propiedad "paginas" como un arreglo
 	this.paginas = [];
-	for (var i = 0; i < hEncuesta.paginas.length; i++) {
-		this.paginas.push(new pagina(hEncuesta.paginas[i]));
-	}
+	// Itera por los elementos del arreglo en la propiedad "paginas" del argumento recibido
+	// TODO: Iterar por los elementos del arreglo en la propiedad "paginas" del argumento recibido
+		// Por cada elemento iterado crea un objeto "pagina", enviando el elemento iterado como argumento
+		// TODO: Crear objeto "pagina" enviando el elemento iterado como argumento
+		// Agrega el objeto creado al arreglo en la propiedad "paginas"
+		// TODO: Agregar objeto creado al arreglo en la propiedad "paginas"
 }
 encuesta.prototype.agregaPaginas = function() {
-	console.log('Agregando paginas...');
-	for (var i = 0; i < this.paginas.length; i++) {
-		this.div.appendChild(this.paginas[i].obtieneDiv());
-		if (i > 0) {
-			this.paginas[i].agregaBotonAnterior();
-		}
-		if (i < this.paginas.length - 1) {
-			this.paginas[i].agregaBotonSiguiente();
-		}
-		if (i == this.paginas.length - 1) {
-			this.paginas[i].agregaBotonFinalizar();
-		}
+	console.group('Agregando paginas...');
+	if (this.paginas.length == 0) {
+		console.warn('La encuesta no tiene paginas');
+	} else {
+		// Itera por los elementos del arreglo en la propiedad "paginas"
+		// TODO: Iterar por los elementos del arreglo en la propiedad "paginas"
+			// Ejecuta el metodo "obtieneDiv" de cada elemento iterado
+			// TODO: Ejecutar metodo "obtieneDiv" de cada elemento iterado
+			if (typeof d !== 'undefined' && d) {
+				// Agrega el resultado del metodo "obtieneDiv" al elemento HTML en la propiedad "div"
+				// TODO: Agregar resultado del metodo al elemento HTML en la propiedad "div"
+			}
+			// Ejecuta los metodos para agregar los botones
+			if (typeof i !== 'undefined') {
+				if (i > 0) {
+					this.paginas[i].agregaBotonAnterior();
+				}
+				if (i < this.paginas.length - 1) {
+					this.paginas[i].agregaBotonSiguiente();
+				}
+				if (i == this.paginas.length - 1) {
+					this.paginas[i].agregaBotonFinalizar();
+				}
+			}
 	}
+	console.groupEnd('Agregando paginas...');
 };
 encuesta.prototype.muestraPagina = function(p) {
-	console.log('Mostrando pagina ' + p + '...');
-	for (var i = 0; i < this.paginas.length; i++) {
-		if (i == p) {
-			this.paginas[i].muestraDiv();
-		} else {
-			this.paginas[i].ocultaDiv();
+	console.group('Mostrando pagina ' + p + '...');
+	if (this.paginas.length == 0) {
+		console.warn('La encuesta no tiene paginas');
+	} else {
+		// Itera por los elementos en el arreglo en la propiedad "paginas"
+		// TODO: Iterar por los elementos en el arreglo en la propiedad "paginas"
+		for (var i = 0; i < this.paginas.length; i++) {
+			// Por cada elemento iterado ejecuta el metodo "muestraDiv" u "ocultaDiv"
+			// segun si la posicion es igual o no a la posicion recibida como argumento
+			// TODO: Ejecutar metodo "muestraDiv" u "ocultaDiv" de cada elemento iterado
+			// segun si la posicion es igual o no a la posicion recibida como argumento
 		}
 	}
+	console.groupEnd('Mostrando pagina ' + p + '...');
 };
+
+// Objeto pagina
 function pagina(hPagina) {
 	var _this = this;
+	// Declara la propiedad secciones como un arreglo
 	this.secciones = [];
-	for (var i = 0; i < hPagina.secciones.length; i++) {
-		this.secciones.push(new seccion(hPagina.secciones[i]));
-	}
-	this.id = idPagina;
-	idPagina++;
+	// Itera por los elementos en el arreglo en la propiedad "secciones" del argumento recibido
+	// TODO: Iterar por los elementos en el arreglo en la propiedad "secciones" del argumento recibido
+		// Por cada elemento iterado crea un objeto "seccion", enviando el elemento iterado como argumento
+		// TODO: Crear objeto "seccion" enviando el elemento iterado como argumento
+		// Agrega el objeto creado al arreglo en la propiedad "secciones"
+		// TODO: Agregar objeto creado al arreglo en la propiedad "secciones"
+	// Asigna a la propiedad "id" el valor en la variable global "idPagina"
+	// TODO: Asignar a la proiedad "id" el valor en la variable global "idPagina"
+	// Incrementa el valor de la variable global "idPagina"
+	// TODO: Incrementar el valor de la variable global "idPagina"
 }
 pagina.prototype.obtieneDiv = function() {
-	this.div = document.createElement('div');
-	this.div.classList.add(this.constructor.name);
-	this.agregaSecciones();
-	return this.div;
+	// Crea un elemento HTML "div"
+	// TODO: Crear un elemento HTML "div"
+	// Asigna el elemento creado a la propiedad "div"
+	// TODO: Asignar el elemento creado a la propiedad "div"
+	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	// Ejecuta el metodo "agregaSecciones"
+	// TODO: Ejecutar el metodo "agregaSecciones"
+	// Devuelve la propiedad "div"
+	// TODO: Devolver la propiedad "div"
 };
 pagina.prototype.agregaSecciones = function() {
-	console.log('Agregando secciones a pagina ' + this.id + '...');
-	for (var i = 0; i < this.secciones.length; i++) {
-		this.div.appendChild(this.secciones[i].obtieneDiv());
+	console.group('Agregando secciones a pagina ' + this.id + '...');
+	if (this.secciones.length == 0)  {
+		console.warn('La pagina ' + this.id + ' no tiene secciones');
+	} else {
+		// Itera por los elementos del arreglo en la propiedad "secciones"
+		// TODO: Iterar por los elementos del arreglo en la propiedad "secciones"
+		for (var i = 0; i < this.secciones.length; i++) {
+			// Ejecuta el metodo "obtieneDiv" de cada elemento iterado
+			// TODO: Ejecutar metodo "obtieneDiv" de cada elemento iterado
+			if (typeof d !== 'undefined' && d) {
+				// Agrega el resultado del metodo "obtieneDiv" al elemento HTML en la propiedad "div"
+				// TODO: Agregar resultado del metodo al elemento HTML en la propiedad "div"
+			}
+		}
 	}
+	console.groupEnd('Agregando secciones a pagina ' + this.id + '...');
 };
 pagina.prototype.muestraDiv = function() {
 	console.log('Mostrando div de pagina ' + this.id + '...');
-	this.div.style.display = 'block';
+	// Muestra el elemento HTML en la propiedad "div"
+	// TODO: Mostrar el elemento HTML en la propiedad "div"
 };
 pagina.prototype.ocultaDiv = function() {
 	console.log('Ocultando div de pagina ' + this.id + '...');
-	this.div.style.display = 'none';
+	// Oculta el elemento HTML en la propiedad "div"
+	// TODO: Ocultar el elemento HTML en la propiedad "div"
 };
 pagina.prototype.agregaBotonSiguiente = function() {
 	console.log('Agregando boton siguiente a pagina ' + this.id + '...');
 	var b = document.createElement('button');
 	b.appendChild(document.createTextNode('Siguiente'));
 	b.addEventListener('click', this.muestraSiguiente.bind(this), false);
-	this.div.appendChild(b);
+	if (this.div) {
+		this.div.appendChild(b);
+	}
 };
 pagina.prototype.agregaBotonAnterior = function() {
 	console.log('Agregando boton anterior a pagina ' + this.id + '...');
 	var b = document.createElement('button');
 	b.appendChild(document.createTextNode('Anterior'));
 	b.addEventListener('click', this.muestraAnterior.bind(this), false);
-	this.div.appendChild(b);
+	if (this.div) {
+		this.div.appendChild(b);
+	}
 };
 pagina.prototype.agregaBotonFinalizar = function() {
 	console.log('Agregando boton finalizar a pagina ' + this.id + '...');
 	var b = document.createElement('button');
 	b.appendChild(document.createTextNode('Finalizar'));
 	b.addEventListener('click', this.muestraFinal.bind(this), false);
-	this.div.appendChild(b);
+	if (this.div) {
+		this.div.appendChild(b);
+	}
 };
 pagina.prototype.muestraSiguiente = function() {
-	console.log('Mostrando pagina siguiente a ' + this.id + '...');
-	if (!this.valida()) {
-		return;
-	}
-	oEncuesta.muestraPagina(this.id + 1);
+	console.info('Mostrando pagina siguiente a ' + this.id + '...');
+	// Ejecuta el metodo "valida"
+	// TODO: Ejecutar el metodo "valida"
+		// Retorna si el resultado del metodo es "false"
+		// TODO: Retornar si el resultado del metodo es "false"
+	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
+	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 };
 pagina.prototype.muestraFinal = function() {
 	console.log('Mostrando final...');
-	if (!this.valida()) {
-		return;
-	}
-	oEncuesta.muestraPagina(this.id + 1);
+	// Ejecuta el metodo "valida"
+	// TODO: Ejecutar el metodo "valida"
+		// Retorna si el resultado del metodo es "false"
+		// TODO: Retornar si el resultado del metodo es "false"
+	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
+	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
+	// Muestra el mensaje final
 	var h = document.createElement('h1');
 	h.appendChild(document.createTextNode('Gracias!'));
 	document.getElementById('divEncuesta').appendChild(h);
 };
 pagina.prototype.muestraAnterior = function() {
 	console.log('Mostrando pagina anterior a ' + this.id + '...');
-	oEncuesta.muestraPagina(this.id - 1);
+	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion anterior en la propiedad "id"
+	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion anterior en la propiedad "id"
 };
 pagina.prototype.valida = function() {
 	console.log('Validando pagina ' + this.id + '...');
 	var validado = true;
-	validado = validado && this.validaSecciones();
-	return validado;
+	// Ejecuta el metodo "validaSecciones"
+	// TODO: Ejecutar el metodo "validaSecciones"
+	// Devuelve el resultado del metodo
+	// TODO: Devolver el resultado del metodo
 };
 pagina.prototype.validaSecciones = function() {
-	console.log('Validando secciones de pagina ' + this.id + '...');
+	console.group('Validando secciones de pagina ' + this.id + '...');
 	var validado = true;
-	for (var i = 0; i < this.secciones.length; i++) {
-		if (!this.secciones[i].valida()) {
-			return false;
+	// Itera por los elementos en el arreglo en la propiedad "secciones"
+	// TODO: Iterar por los elementos en el arreglo en la propiedad "secciones"
+		// Ejecuta el metodo "valida" por cada elemento iterado
+		// TODO: Ejecutar el metodo "valida" por cada elemento iterado
+		if (typeof i !== 'undefined') {
+			if (!this.secciones[i].valida()) {
+				console.groupEnd('Validando secciones de pagina ' + this.id + '...');
+				// Deuelve "false" si el resultado del metodo es "false"
+				// TODO: Devolver "false" si el resultado del metodo es "false"
+			}
 		}
-	}
-	return validado;
+	console.groupEnd('Validando secciones de pagina ' + this.id + '...');
+	// Devuelve "true"
+	// TODO: Devolver "true"
 };
+
+// Objeto seccion
 function seccion(hSeccion) {
 	this.nombre = hSeccion.nombre;
+	// Declara la propiedad "preguntas" como un arreglo
 	this.preguntas = [];
+	// Itera por los elementos en el arreglo en la propiedad "preguntas" del argumento recibido
 	for (var i = 0; i < hSeccion.preguntas.length; i++) {
+		// Por cada elemento iterado crea un objeto "pregunta", enviando el elemento iterado como argumento
+		// Agrega el objeto creado al arreglo en la propiedad "preguntas"
 		this.preguntas.push(eval('new pregunta' + hSeccion.preguntas[i].tipo.substring(0, 1).toUpperCase() + hSeccion.preguntas[i].tipo.substring(1) + '(hSeccion.preguntas[i])'));
 	}
 }
 seccion.prototype.obtieneDiv = function() {
-	this.div = document.createElement('div');
-	this.div.classList.add(this.constructor.name);
+	// Crea un elemento HTML "div"
+	// TODO: Crear un elemento HTML "div"
+	// Asigna el elemento creado a la propiedad "div"
+	// TODO: Asignar el elemento creado a la propiedad "div"
+	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
 	if (this.nombre) {
-		var hNombre = document.createElement('h2');
-		hNombre.appendChild(document.createTextNode(this.nombre));
-		this.div.appendChild(hNombre)
+		// Crea un elemento HTML "h2"
+		// TODO: Crear un elemento HTML "h2"
+		// Crea un elemento HTML TextNode con la propiedad "nombre"
+		// TODO: Crear un elemento HTML TextNode con la propiedad "nombre"
+		// Agrega el elemento HTML TextNode al elemento HTML "h2"
+		// TODO: Agregar el elemento HTML TextNode al elemento HTML "h2"
+		// Agrega al elemento HTML "div" en la propiedad "div" el elemento HTML "h2"
+		// TODO: Agregar al elemento HTML "div" en la propiedad "div" el elemento HTML "h2"
 	}
-	this.agregaPreguntas();
-	return this.div;
+	// Ejecuta el metodo "agregaPreguntas"
+	// TODO: Ejecutar el metodo "agregaPreguntas"
+	// Devuelve la propiedad "div"
+	// TODO: Devolver la propiedad "div"
 };
 seccion.prototype.agregaPreguntas = function() {
-	console.log('Agregando preguntas a seccion ' + this.nombre + '...');
-	for (var i = 0; i < this.preguntas.length; i++) {
-		this.div.appendChild(this.preguntas[i].obtieneDiv());
+	console.group('Agregando preguntas a seccion ' + this.nombre + '...');
+	if (this.preguntas.length == 0) {
+		console.warn('La seccion ' + this.nombre + ' no tiene preguntas');
+	} else {
+		// Itera por los elementos del arreglo en la propiedad "preguntas"
+		// TODO: Iterar por los elementos del arreglo en la propiedad "preguntas"
+			// Por cada elemento iterado ejecuta el metodo "obtieneDiv"
+			// TODO: Por cada elemento iterado ejecutar el metodo "obtieneDiv"
+			// Agrega el resultado del metodo "obtieneDiv" al elemento HTML "div" en la propiedad "div"
+			// TODO: Agregar el resultado del metodo "obtieneDiv" al elemento HTML "div" en la propiedad "div"
+			if (typeof d !== 'undefined' && d) {
+			}
 	}
+	console.groupEnd('Agregando preguntas a seccion ' + this.nombre + '...');
 };
 seccion.prototype.valida = function() {
-	console.log('Validando seccion ' + this.nombre + '...');
+	console.group('Validando seccion ' + this.nombre + '...');
 	var validada = true;
-	for (var i = 0; i < this.preguntas.length; i++) {
-		if (!this.preguntas[i].valida()) {
-			return false;
+	// Itera por los elementos en el arreglo en la propiedad "preguntas"
+	// TODO: Iterar por los elementos en el arreglo en la propiedad "preguntas"
+		if (typeof i !== 'undefined' && this.preguntas[i].valida() === undefined) {
+			console.warn('La validacion de la pregunta ' + this.preguntas[i].nombre + ' no esta definida');
 		}
-	}
-	return validada;
+		// Ejecuta el metodo "valida" de cada elemento iterado
+		// TODO: Ejecutar el metodo "valida" de cada elemento iterado
+			if (typeof i !== 'undefined') {
+				console.warn('Pregunta ' + this.preguntas[i].nombre + ' no valida');
+			}
+			console.groupEnd('Validando seccion ' + this.nombre + '...');
+			// Devuelve "false" si el resultado del metodo es "false"
+			// TODO: Devolver "false" si el resultado del metodo es "false"
+	console.groupEnd('Validando seccion ' + this.nombre + '...');
+	// Deuelve "true"
+	// TODO: Devolver "true"
 };
+
+// Objeto pregunta
 function pregunta(hPregunta) {
 	this.nombre = hPregunta.nombre;
-	this.tipo = hPregunta.tipo;
-	this.obligatoria = hPregunta.obligatoria;
-	this.id = idPregunta;
-	idPregunta++;
+	// Asigna a la propiedad "tipo" el valor en la propiedad "tipo" del argumento recibido
+	// TODO: Asignar a la propiedad "tipo" el valor en la propiedad "tipo" del argumento recibido
+	// Asigna a la propiedad "obligatoria" el valor en la propiedad "obligatoria" del argumento recibido
+	// TODO: Asignar a la propiedad "obligatoria" el valor en la propiedad "obligatoria" del argumento recibido
+	// Asigna a la propiedad "id" el valor de la variable global "idPregunta"
+	// TODO: Asignar a la propiedad "id" el valor de la variable global "idPregunta"
+	// Incrementa el valor de la variable global "idPregunta"
+	// TODO: Incrementar el valor de la variable global "idPregunta"
 }
 pregunta.prototype.obtieneDiv = function() {
-	this.div = document.createElement('div');
-	this.div.classList.add(this.constructor.name);
+	// Crea un elemento HTML "div"
+	// TODO: Crear un elemento HTML "div"
+	// Asigna el elemento creado a la propiedad "div"
+	// TODO: Asignar el elemento creado a la propiedad "div"
+	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
 	if (this.nombre) {
-		var hNombre = document.createElement('h3');
-		hNombre.appendChild(document.createTextNode(this.nombre));
-		this.div.appendChild(hNombre)
+		// Crea un elemento HTML "h3"
+		// TODO: Crear un elemento HTML "h3"
+		// Crea un elemento HTML TextNode con la propiedad "nombre"
+		// TODO: Crear un elemento HTML TextNode con la propiedad "nombre"
+		// Agrega el elemento HTML TextNode al elemento HTML "h3"
+		// TODO: Agregar el elemento HTML TextNode al elemento HTML "h3"
+		// Agrega al elemento HTML "div" en la propiedad "div" el elemento HTML "h3"
+		// TODO: Agregar al elemento HTML "div" en la propiedad "div" el elemento HTML "h3"
 	}
-	if (this.obligatoria) {
-		var d = document.createElement('div');
-		d.classList.add('obligatoria');
-		d.appendChild(document.createTextNode('*'));
-		this.div.appendChild(d);
-	}
-	this.agregaRespuestas();
-	return this.div;
+		// Crea un elemento HTML "div"
+		// TODO: Crear un elemento HTML "div"
+		// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div", con el argumento "obligatoria"
+		// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div", con el argumento "obligatoria"
+		// Crea un elemento HTML TextNode con la propiedad "*"
+		// TODO: Crear un elemento HTML TextNode con la propiedad "*"
+		// Agrega el elemento HTML TextNode al elemento HTML "div"
+		// TODO: Agregar el elemento HTML TextNode al elemento HTML "div"
+		// Agrega el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
+		// TODO: Agregar el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
+	// Ejecuta el metodo "agregaRespuestas"
+	// TODO: Ejecutar el metodo "agregaRespuestas"
+	// Devuelve el elemento "div" en la propiedad "div"
+	// TODO: Devolver el elemento "div" en la propiedad "div"
 };
 pregunta.prototype.muestraValidez = function(v) {
-	console.log('Mosrando validez de pregunta ' + this.nombre + '...');
-	if (v) {
-		this.div.style.background = 'white'
-	} else {
-		this.div.style.background = 'red'
-	}
+	console.log('Mostrando validez de pregunta ' + this.nombre + '...');
+		// Si el argumento recibido es "true" asigna el valor "white" a la propiedad "background" de la propiedad "style" del elemento HTML "div" en la propiedad "div"
+		// TODO: Si el argumento recibido es "true" asignar el valor "white" a la propiedad "background" de la propiedad "style" del elemento HTML "div" en la propiedad "div"
+		// Si el argumento recibido es "false" asigna el valor "red" a la propiedad "background" de la propiedad "style" del elemento HTML "div" en la propiedad "div"
+		// TODO: Si el argumento recibido es "false" asignar el valor "red" a la propiedad "background" de la propiedad "style" del elemento HTML "div" en la propiedad "div"
 };
+
+// Objeto preguntaText
 function preguntaText(hPregunta) {
 	pregunta.call(this, hPregunta);
 }
@@ -278,57 +417,95 @@ preguntaText.prototype.constructor = preguntaText;
 
 preguntaText.prototype.agregaRespuestas = function() {
 	console.log('Agregando respuestas a pregunta ' + this.nombre + '...');
-	var d = document.createElement('div');
-	var t = document.createElement('input');
-	t.type = 'text';
-	t.addEventListener('change', this.valida.bind(this), false);
-	this.input = t;
-	d.appendChild(t);
-	this.div.appendChild(d);
+	// Crea un elemento HTML "div"
+	// TODO: Crear un elemento HTML "div"
+	// Crea un elemento HTML "input"
+	// TODO: Crear un elemento HTML "input"
+	// Asigna el valor "text" a la propiedad "type" del elemento HTML "input"
+	// TODO: Asignar el valor "text" a la propiedad "type" del elemento HTML "input"
+	// Agrega el metodo "valida" al evento "change" del elemento HTML "input"
+	// TODO: Agregar el metodo "valida" al evento "change" del elemento HTML "input"
+	// Asigna el elemento HTML "input" a la propiedad "input"
+	// TODO: Asignar el elemento HTML "input" a la propiedad "input"
+	// Agrega al elemento HTML "div" el elemento HTML "input"
+	// TODO: Agregar al elemento HTML "div" el elemento HTML "input"
+	// Agrega el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
+	// TODO: Agregar el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
 };
 preguntaText.prototype.valida = function() {
-	console.log('Validando pregunta ' + this.nombre + '...');
-	var validada = true;
-	if (this.obligatoria && this.input.value == '') {
-		validada = false;
-	}
-	this.muestraValidez(validada);
-	return validada;
+	console.group('Validando pregunta ' + this.nombre + '...');
+	// Declara la variable "validada" y le asigna el valor "true"
+	// TODO: Declarar la variable "validada" y asignarle el valor "true"
+		// Asigna el valor "false" a la variable "validada" si el valor de la propiedad "obligatoria" es "true" y el valor de la propiedad "value" del elemento HTML en la propiedad "input" es igual a ''
+		// TODO: Asignar el valor "false" a la variable "validada" si el valor de la propiedad "obligatoria" es "true" y el valor de la propiedad "value" del elemento HTML en la propiedad "input" es igual a ''
+	// Ejecuta el metodo "muestraValidez" con el valor de la variable "validada" como argumento
+	// TODO: Ejecutar el metodo "muestraValidez" con el valor de la variable "validada" como argumento
+	console.groupEnd('Validando pregunta ' + this.nombre + '...');
+	// Devuelve el valor de la variable "validada"
+	// TODO: Devolver el valor de la variable "validada"
 };
 
+// Objeto preguntaRadio
 function preguntaRadio(hPregunta) {
 	pregunta.call(this, hPregunta);
-	this.respuestas = [];
-	for (var i = 0; i < hPregunta.respuestas.length; i++) {
-		this.respuestas.push(hPregunta.respuestas[i]);
-	}
+	// Declara la propiedad "respuestas" como un arreglo
+	// TODO: Declarar la propiedad "respuestas" como un arreglo
+	// Itera por los elementos en el arreglo de la propiedad "respuestas" del argumento recibido
+	// TODO: Iterar por los elementos en el arreglo de la propiedad "respuestas" del argumento recibido
+		// Agrega cada elemento iterado al arreglo en la propiedad "respuestas"
+		// TODO: Agregar cada elemento iterado al arreglo en la propiedad "respuestas"
 }
 preguntaRadio.prototype = Object.create(pregunta.prototype);
 preguntaRadio.prototype.constructor = preguntaRadio;
 
 preguntaRadio.prototype.agregaRespuestas = function() {
 	console.log('Agregando respuestas a pregunta ' + this.nombre + '...');
-	for (var i = 0; i < this.respuestas.length; i++) {
-		var d = document.createElement('div');
-		d.classList.add('respuesta');
-		var r = document.createElement('input');
-		r.type = 'radio';
-		r.name = 'radioPregunta' + this.id;
-		r.addEventListener('change', this.valida.bind(this), false);
-		d.appendChild(r);
-		d.appendChild(document.createTextNode(this.respuestas[i]));
-		this.div.appendChild(d);
+	if (typeof this.respuestas === 'undefined' || this.respuestas.length == 0) {
+		console.warn('La pregunta ' + this.nombre + ' no tiene respuestas');
+	} else {
+		// Itera por los elementos en el arreglo en la propiedad "respuestas"
+		// TODO: Iterar por los elementos en el arreglo en la propiedad "respuestas"
+			// Crea un elemento HTML "div"
+			// TODO: Crear un elemento HTML "div"
+			// Ejecuta el metodo "add" de la propiedad "classList" del elemento "div", con el argumento "respuesta"
+			// TODO: Ejecutar el metodo "add" de la propiedad "classList" del elemento "div", con el argumento "respuesta"
+			// Crea un elemento HTML "input"
+			// TODO: Crear un elemento HTML "input"
+			// Asigna el valor "radio" a la propiedad "type" del elemento HTML "input"
+			// TODO: Asignar el valor "radio" a la propiedad "type" del elemento HTML "input"
+			// Asigna la concatenacion del valor "radioPregunta" y el valor de la propiedad "id", a la propiedad "name" del elemento HTML "input"
+			// TODO: Asignar la concatenacion del valor "radioPregunta" y el valor de la propiedad "id", a la propiedad "name" del elemento HTML "input"
+			// Agrega el metodo "valida" al evento "change" del elemento HTML "input"
+			// TODO: Agregar el metodo "valida" al evento "change" del elemento HTML "input"
+			// Agrega el elemento HTML "input" al elemento HTML "div"
+			// TODO: Agregar el elemento HTML "input" al elemento HTML "div"
+			// Crea un elemento HTML TextNode con el valor del elemento iterado
+			// TODO: Crear un elemento HTML TextNode con el valor del elemento iterado
+			// Agrega el elemento HTML TextNode al elemento HTML "div"
+			// TODO: Agregar el elemento HTML TextNode al elemento HTML "div"
+			// Agrega el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
+			// TODO: Agregar el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
 	}
 };
 preguntaRadio.prototype.valida = function() {
-	console.log('Validando pregunta ' + this.nombre + '...');
-	var validada = false;
-	var aradio = this.div.querySelectorAll('input');
-	for (var i = 0; i < aradio.length; i++) {
-		validada = validada || aradio[i].checked;
+	console.group('Validando pregunta ' + this.nombre + '...');
+	// Declara la variable "validada" y le asigna el valor "true"
+	// TODO: Declarar la variable "validada" y asignarle el valor "true"
+	// Declara un arreglo y le asigna el resultado del metodo "querySelectorAll" del elemento HTML "div" en la propiedad "div" con el argumento "input"
+	// TODO: Declarar un arreglo y le asigna el resultado del metodo "querySelectorAll" del elemento HTML "div" en la propiedad "div" con el argumento "input"
+	if (typeof aradio === 'undefined' || aradio.length == 0) {
+		console.warn('La pregunta ' + this.nombre + ' no tiene elementos HTML');
+	} else {
+		// Itera por los elementos en el arreglo
+		// TODO: Iterar por los elementos en el arreglo
+			// Asigna el valor "true" a la variable "validada" si la variable validada tiene el valor "true" o la propiedad "checked" del elemento HTML iterado tiene el valor "true"
+			// TODO: Asignar el valor "true" a la variable "validada" si la variable validada tiene el valor "true" o la propiedad "checked" del elemento HTML iterado tiene el valor "true"
 	}
-	this.muestraValidez(validada);
-	return validada;
+	// Ejecuta el metodo "muestraValidez" enviando el valor de la variable "validada" como argumento
+	// TODO: Ejecutar el metodo "muestraValidez" enviando el valor de la variable "validada" como argumento
+	console.groupEnd('Validando pregunta ' + this.nombre + '...');
+	// Deuelve el valor de la variable "validada"
+	// TODO: Devolver el valor de la variable "validada"
 };
 </script>
 <style>
