@@ -358,12 +358,16 @@ seccion.prototype.agregaPreguntas = function() {
 	} else {
 		// Itera por los elementos del arreglo en la propiedad "preguntas"
 		// TODO: Iterar por los elementos del arreglo en la propiedad "preguntas"
+		for (var i = 0; i < this.preguntas.length; i++) {
+			var d = this.preguntas[i].obtieneDiv();
 			// Por cada elemento iterado ejecuta el metodo "obtieneDiv"
 			// TODO: Por cada elemento iterado ejecutar el metodo "obtieneDiv"
 			// Agrega el resultado del metodo "obtieneDiv" al elemento HTML "div" en la propiedad "div"
 			// TODO: Agregar el resultado del metodo "obtieneDiv" al elemento HTML "div" en la propiedad "div"
 			if (typeof d !== 'undefined' && d) {
+				this.div = d;
 			}
+		}
 	}
 	console.groupEnd('Agregando preguntas a seccion ' + this.nombre + '...');
 };
