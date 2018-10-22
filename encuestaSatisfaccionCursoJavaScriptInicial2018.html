@@ -257,8 +257,8 @@ pagina.prototype.agregaBotonFinalizar = function() {
 };
 pagina.prototype.muestraSiguiente = function() {
 	console.info('Mostrando pagina siguiente a ' + this.id + '...');
-	if(this.valida()!=true){
-	return
+	if (this.valida() != true) {
+		return;
 	}
 	oEncuesta.muestraPagina(this.id+1);
 
@@ -377,20 +377,21 @@ seccion.prototype.valida = function() {
 	var validada = true;
 	// Itera por los elementos en el arreglo en la propiedad "preguntas"
 	// TODO: Iterar por los elementos en el arreglo en la propiedad "preguntas"
-		if (typeof i !== 'undefined' && this.preguntas[i].valida() === undefined) {
+	for(var i; i< this.preguntas.length; i++){
+	if (typeof i !== 'undefined' && this.preguntas[i].valida() === undefined) {
 			console.warn('La validacion de la pregunta ' + this.preguntas[i].nombre + ' no esta definida');
 		}
-		// Ejecuta el metodo "valida" de cada elemento iterado
-		// TODO: Ejecutar el metodo "valida" de cada elemento iterado
 			if (typeof i !== 'undefined') {
 				console.warn('Pregunta ' + this.preguntas[i].nombre + ' no valida');
 			}
 			console.groupEnd('Validando seccion ' + this.nombre + '...');
-			// Devuelve "false" si el resultado del metodo es "false"
-			// TODO: Devolver "false" si el resultado del metodo es "false"
+			if(this.pregunta[i].valida()!=true){
+				return false;
+			}
+	}
+		
 	console.groupEnd('Validando seccion ' + this.nombre + '...');
-	// Deuelve "true"
-	// TODO: Devolver "true"
+	return true;
 };
 
 // Objeto pregunta
@@ -398,12 +399,16 @@ function pregunta(hPregunta) {
 	this.nombre = hPregunta.nombre;
 	// Asigna a la propiedad "tipo" el valor en la propiedad "tipo" del argumento recibido
 	// TODO: Asignar a la propiedad "tipo" el valor en la propiedad "tipo" del argumento recibido
+	this.tipo = hPregunta.tipo;
 	// Asigna a la propiedad "obligatoria" el valor en la propiedad "obligatoria" del argumento recibido
 	// TODO: Asignar a la propiedad "obligatoria" el valor en la propiedad "obligatoria" del argumento recibido
+	this.obligatoria = hPregunta.obligatoria;
 	// Asigna a la propiedad "id" el valor de la variable global "idPregunta"
 	// TODO: Asignar a la propiedad "id" el valor de la variable global "idPregunta"
+	this.id = idPregunta;
 	// Incrementa el valor de la variable global "idPregunta"
 	// TODO: Incrementar el valor de la variable global "idPregunta"
+	idPregunta++;
 }
 pregunta.prototype.obtieneDiv = function() {
 	// Crea un elemento HTML "div"
