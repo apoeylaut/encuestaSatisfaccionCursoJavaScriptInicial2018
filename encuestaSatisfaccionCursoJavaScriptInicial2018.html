@@ -177,14 +177,18 @@ function pagina(hPagina) {
 pagina.prototype.obtieneDiv = function() {
 	// Crea un elemento HTML "div"
 	// TODO: Crear un elemento HTML "div"
+	this.div = document.createElement('div');
 	// Asigna el elemento creado a la propiedad "div"
 	// TODO: Asignar el elemento creado a la propiedad "div"
 	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
 	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	this.div.classList.add(this.constructor.name);
 	// Ejecuta el metodo "agregaSecciones"
 	// TODO: Ejecutar el metodo "agregaSecciones"
+	this.agregaSecciones();
 	// Devuelve la propiedad "div"
 	// TODO: Devolver la propiedad "div"
+	return this.div ;
 };
 pagina.prototype.agregaSecciones = function() {
 	console.group('Agregando secciones a pagina ' + this.id + '...');
