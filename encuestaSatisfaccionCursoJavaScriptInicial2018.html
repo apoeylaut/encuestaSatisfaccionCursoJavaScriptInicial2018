@@ -110,9 +110,12 @@ encuesta.prototype.agregaPaginas = function() {
 	} else {
 		// Itera por los elementos del arreglo en la propiedad "paginas"
 		// TODO: Iterar por los elementos del arreglo en la propiedad "paginas"
+		for (var i = 0 ; i < this.paginas.length; i++){
+			var d = this.paginas[i].obtieneDiv();
 			// Ejecuta el metodo "obtieneDiv" de cada elemento iterado
 			// TODO: Ejecutar metodo "obtieneDiv" de cada elemento iterado
 			if (typeof d !== 'undefined' && d) {
+				this.div= d;
 				// Agrega el resultado del metodo "obtieneDiv" al elemento HTML en la propiedad "div"
 				// TODO: Agregar resultado del metodo al elemento HTML en la propiedad "div"
 			}
@@ -128,6 +131,7 @@ encuesta.prototype.agregaPaginas = function() {
 					this.paginas[i].agregaBotonFinalizar();
 				}
 			}
+		}
 	}
 	console.groupEnd('Agregando paginas...');
 };
