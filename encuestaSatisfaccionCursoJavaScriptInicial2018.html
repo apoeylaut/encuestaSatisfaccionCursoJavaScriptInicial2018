@@ -261,7 +261,7 @@ pagina.prototype.muestraSiguiente = function() {
 	return
 	}
 	oEncuesta.muestraPagina(this.id+1);
-	
+
 };
 pagina.prototype.muestraFinal = function() {
 	console.log('Mostrando final...');
@@ -272,7 +272,7 @@ pagina.prototype.muestraFinal = function() {
 	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 	// Muestra el mensaje final
-	
+
 	var h = document.createElement('h1');
 	h.appendChild(document.createTextNode('Gracias!'));
 	document.getElementById('divEncuesta').appendChild(h);
@@ -297,10 +297,10 @@ pagina.prototype.validaSecciones = function() {
 	var validado = true;
 	// Itera por los elementos en el arreglo en la propiedad "secciones"
 	// TODO: Iterar por los elementos en el arreglo en la propiedad "secciones"
-	for(var i = 0; i < this.secciones.length; i++){	
+	for(var i = 0; i < this.secciones.length; i++){
 		// Ejecuta el metodo "valida" por cada elemento iterado
 		// TODO: Ejecutar el metodo "valida" por cada elemento iterado
-		
+
 		if (typeof i !== 'undefined') {
 			if (!this.secciones[i].valida()) {
 				console.groupEnd('Validando secciones de pagina ' + this.id + '...');
@@ -308,7 +308,7 @@ pagina.prototype.validaSecciones = function() {
 				// TODO: Devolver "false" si el resultado del metodo es "false"
 				return false;
 			}
-			
+
 		}
 	console.groupEnd('Validando secciones de pagina ' + this.id + '...');
 	// Devuelve "true"
@@ -334,17 +334,22 @@ seccion.prototype.obtieneDiv = function() {
 	// TODO: Crear un elemento HTML "div"
 	// Asigna el elemento creado a la propiedad "div"
 	// TODO: Asignar el elemento creado a la propiedad "div"
+	this.div = document.createElement('div');
 	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
-	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento Seccion (que es el nombre de la clase)
+	this.div.classList.add(this.constructor.name);
 	if (this.nombre) {
 		// Crea un elemento HTML "h2"
 		// TODO: Crear un elemento HTML "h2"
+		var vH2 = document.createElement('h2');
 		// Crea un elemento HTML TextNode con la propiedad "nombre"
 		// TODO: Crear un elemento HTML TextNode con la propiedad "nombre"
 		// Agrega el elemento HTML TextNode al elemento HTML "h2"
 		// TODO: Agregar el elemento HTML TextNode al elemento HTML "h2"
+		vH2.appendChild(document.createTextNode(this.nombre));
 		// Agrega al elemento HTML "div" en la propiedad "div" el elemento HTML "h2"
 		// TODO: Agregar al elemento HTML "div" en la propiedad "div" el elemento HTML "h2"
+		this.div.appendChild(vH2);
 	}
 	// Ejecuta el metodo "agregaPreguntas"
 	// TODO: Ejecutar el metodo "agregaPreguntas"
