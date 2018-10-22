@@ -96,6 +96,9 @@ function encuesta(hEncuesta) {
 	this.div = document.getElementById('divEncuesta');
 	// Declara la propiedad "paginas" como un arreglo
 	this.paginas = [];
+	for (var i = 0; i < hEncuesta.paginas.length; i++) {
+		this.paginas.push(new pagina(hEncuesta.paginas[i]));
+	}
 	// Itera por los elementos del arreglo en la propiedad "paginas" del argumento recibido
 	// TODO: Iterar por los elementos del arreglo en la propiedad "paginas" del argumento recibido
 		// Por cada elemento iterado crea un objeto "pagina", enviando el elemento iterado como argumento
@@ -103,6 +106,7 @@ function encuesta(hEncuesta) {
 		// Agrega el objeto creado al arreglo en la propiedad "paginas"
 		// TODO: Agregar objeto creado al arreglo en la propiedad "paginas"
 }
+
 encuesta.prototype.agregaPaginas = function() {
 	console.group('Agregando paginas...');
 	if (this.paginas.length == 0) {
