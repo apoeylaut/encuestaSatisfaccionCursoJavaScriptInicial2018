@@ -147,11 +147,10 @@ encuesta.prototype.muestraPagina = function(p) {
 		// Itera por los elementos en el arreglo en la propiedad "paginas"
 		// TODO: Iterar por los elementos en el arreglo en la propiedad "paginas"
 		for (var i = 0; i < this.paginas.length; i++) {
-		
 		if(i == p){
-			this.pagina[i].muestraDiv();
+			this.paginas[i].muestraDiv();
 		}else{
-			this.pagina[i].ocultaDiv();
+			this.paginas[i].ocultaDiv();
 		}
 			
 		}
