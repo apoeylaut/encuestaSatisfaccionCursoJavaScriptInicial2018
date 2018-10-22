@@ -152,7 +152,7 @@ encuesta.prototype.muestraPagina = function(p) {
 		}else{
 			this.paginas[i].ocultaDiv();
 		}
-			
+
 		}
 	}
 	console.groupEnd('Mostrando pagina ' + p + '...');
@@ -206,9 +206,11 @@ pagina.prototype.agregaSecciones = function() {
 		for (var i = 0; i < this.secciones.length; i++) {
 			// Ejecuta el metodo "obtieneDiv" de cada elemento iterado
 			// TODO: Ejecutar metodo "obtieneDiv" de cada elemento iterado
+			var d = (this.secciones[i].obtieneDiv());
 			if (typeof d !== 'undefined' && d) {
 				// Agrega el resultado del metodo "obtieneDiv" al elemento HTML en la propiedad "div"
 				// TODO: Agregar resultado del metodo al elemento HTML en la propiedad "div"
+				this.div = d;
 			}
 		}
 	}
