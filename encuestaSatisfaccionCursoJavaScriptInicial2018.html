@@ -216,11 +216,13 @@ pagina.prototype.agregaSecciones = function() {
 };
 pagina.prototype.muestraDiv = function() {
 	console.log('Mostrando div de pagina ' + this.id + '...');
+	this.div.style.display = "block";
 	// Muestra el elemento HTML en la propiedad "div"
 	// TODO: Mostrar el elemento HTML en la propiedad "div"
 };
 pagina.prototype.ocultaDiv = function() {
 	console.log('Ocultando div de pagina ' + this.id + '...');
+	this.div.style.display = "none";
 	// Oculta el elemento HTML en la propiedad "div"
 	// TODO: Ocultar el elemento HTML en la propiedad "div"
 };
@@ -253,12 +255,11 @@ pagina.prototype.agregaBotonFinalizar = function() {
 };
 pagina.prototype.muestraSiguiente = function() {
 	console.info('Mostrando pagina siguiente a ' + this.id + '...');
-	// Ejecuta el metodo "valida"
-	// TODO: Ejecutar el metodo "valida"
-		// Retorna si el resultado del metodo es "false"
-		// TODO: Retornar si el resultado del metodo es "false"
-	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
-	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
+	if(this.valida()!=true){
+	return
+	}
+	oEncuesta.muestraPagina(this.id+1);
+	
 };
 pagina.prototype.muestraFinal = function() {
 	console.log('Mostrando final...');
@@ -269,6 +270,7 @@ pagina.prototype.muestraFinal = function() {
 	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 	// Muestra el mensaje final
+	
 	var h = document.createElement('h1');
 	h.appendChild(document.createTextNode('Gracias!'));
 	document.getElementById('divEncuesta').appendChild(h);
@@ -277,12 +279,14 @@ pagina.prototype.muestraAnterior = function() {
 	console.log('Mostrando pagina anterior a ' + this.id + '...');
 	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion anterior en la propiedad "id"
 	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion anterior en la propiedad "id"
+	this.oEncuesta.muestraPagina(this.id - 1);
 };
 pagina.prototype.valida = function() {
 	console.log('Validando pagina ' + this.id + '...');
-	var validado = true;
+	//var validado = true;
 	// Ejecuta el metodo "validaSecciones"
 	// TODO: Ejecutar el metodo "validaSecciones"
+	return this.validaSecciones();
 	// Devuelve el resultado del metodo
 	// TODO: Devolver el resultado del metodo
 };
