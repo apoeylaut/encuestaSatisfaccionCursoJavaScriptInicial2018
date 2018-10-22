@@ -259,6 +259,12 @@ pagina.prototype.muestraSiguiente = function() {
 		// TODO: Retornar si el resultado del metodo es "false"
 	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
+	
+	if(this.valida()!=true){
+	return
+	}
+	oEncuesta.muestraPagina(this.id+1);
+	
 };
 pagina.prototype.muestraFinal = function() {
 	console.log('Mostrando final...');
@@ -269,6 +275,7 @@ pagina.prototype.muestraFinal = function() {
 	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion siguiente en la propiedad "id"
 	// Muestra el mensaje final
+	
 	var h = document.createElement('h1');
 	h.appendChild(document.createTextNode('Gracias!'));
 	document.getElementById('divEncuesta').appendChild(h);
