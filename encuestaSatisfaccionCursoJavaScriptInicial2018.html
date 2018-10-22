@@ -405,32 +405,45 @@ pregunta.prototype.obtieneDiv = function() {
 	// TODO: Crear un elemento HTML "div"
 	// Asigna el elemento creado a la propiedad "div"
 	// TODO: Asignar el elemento creado a la propiedad "div"
+	this.div = document.createElement('div');
 	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
 	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	this.div.add.classList('pregunta');
 	if (this.nombre) {
 		// Crea un elemento HTML "h3"
 		// TODO: Crear un elemento HTML "h3"
+		var eH3 = document.createElement('h3');
 		// Crea un elemento HTML TextNode con la propiedad "nombre"
 		// TODO: Crear un elemento HTML TextNode con la propiedad "nombre"
+		var eTN = document.createTextNode(this.nombre);
 		// Agrega el elemento HTML TextNode al elemento HTML "h3"
 		// TODO: Agregar el elemento HTML TextNode al elemento HTML "h3"
+		eH3.appendChild(this.eTN);
 		// Agrega al elemento HTML "div" en la propiedad "div" el elemento HTML "h3"
 		// TODO: Agregar al elemento HTML "div" en la propiedad "div" el elemento HTML "h3"
+		this.div.div.appendChild(this.eH3);
 	}
 		// Crea un elemento HTML "div"
 		// TODO: Crear un elemento HTML "div"
+		var div = document.createElement('div');
 		// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div", con el argumento "obligatoria"
 		// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div", con el argumento "obligatoria"
+		this.div.classList.add('obligatoria');
 		// Crea un elemento HTML TextNode con la propiedad "*"
 		// TODO: Crear un elemento HTML TextNode con la propiedad "*"
+		var eObli = document.createTextNode('*');
 		// Agrega el elemento HTML TextNode al elemento HTML "div"
 		// TODO: Agregar el elemento HTML TextNode al elemento HTML "div"
+		this.div.appendChild(eObli);
 		// Agrega el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
 		// TODO: Agregar el elemento HTML "div" al elemento HTML "div" en la propiedad "div"
-	// Ejecuta el metodo "agregaRespuestas"
+		this.div.appendChild(div);
+	// Ejecuta el metodo "agregaRespuestas"	
 	// TODO: Ejecutar el metodo "agregaRespuestas"
+	this.agregaRespuestas();
 	// Devuelve el elemento "div" en la propiedad "div"
 	// TODO: Devolver el elemento "div" en la propiedad "div"
+	return this.div ; 
 };
 pregunta.prototype.muestraValidez = function(v) {
 	console.log('Mostrando validez de pregunta ' + this.nombre + '...');
