@@ -277,12 +277,14 @@ pagina.prototype.muestraAnterior = function() {
 	console.log('Mostrando pagina anterior a ' + this.id + '...');
 	// Ejecuta el metodo "muestraPagina" del objeto "oEncuesta", con la posicion anterior en la propiedad "id"
 	// TODO: Ejecutar el metodo "muestraPagina" del objeto "oEncuesta", con la posicion anterior en la propiedad "id"
+	this.oEncuesta.muestraPagina(this.id - 1);
 };
 pagina.prototype.valida = function() {
 	console.log('Validando pagina ' + this.id + '...');
 	var validado = true;
 	// Ejecuta el metodo "validaSecciones"
 	// TODO: Ejecutar el metodo "validaSecciones"
+	return this.validaSecciones();
 	// Devuelve el resultado del metodo
 	// TODO: Devolver el resultado del metodo
 };
