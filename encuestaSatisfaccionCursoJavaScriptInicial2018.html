@@ -353,8 +353,10 @@ seccion.prototype.obtieneDiv = function() {
 	}
 	// Ejecuta el metodo "agregaPreguntas"
 	// TODO: Ejecutar el metodo "agregaPreguntas"
+	this.agregaPreguntas();
 	// Devuelve la propiedad "div"
 	// TODO: Devolver la propiedad "div"
+	return this.div;
 };
 seccion.prototype.agregaPreguntas = function() {
 	console.group('Agregando preguntas a seccion ' + this.nombre + '...');
@@ -393,7 +395,7 @@ seccion.prototype.valida = function() {
 				return false;
 			}
 	}
-		
+
 	console.groupEnd('Validando seccion ' + this.nombre + '...');
 	return true;
 };
