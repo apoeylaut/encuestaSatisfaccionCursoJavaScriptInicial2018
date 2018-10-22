@@ -161,26 +161,36 @@ function pagina(hPagina) {
 	this.secciones = [];
 	// Itera por los elementos en el arreglo en la propiedad "secciones" del argumento recibido
 	// TODO: Iterar por los elementos en el arreglo en la propiedad "secciones" del argumento recibido
+	for(var i = 0; i < hPagina.secciones.length; i++)
+	{
 		// Por cada elemento iterado crea un objeto "seccion", enviando el elemento iterado como argumento
 		// TODO: Crear objeto "seccion" enviando el elemento iterado como argumento
 		// Agrega el objeto creado al arreglo en la propiedad "secciones"
 		// TODO: Agregar objeto creado al arreglo en la propiedad "secciones"
+		this.secciones.push(new seccion(hPagina.secciones[i]));
+	}
 	// Asigna a la propiedad "id" el valor en la variable global "idPagina"
 	// TODO: Asignar a la proiedad "id" el valor en la variable global "idPagina"
+	this.id = idPagina;
 	// Incrementa el valor de la variable global "idPagina"
 	// TODO: Incrementar el valor de la variable global "idPagina"
+	idPagina++;
 }
 pagina.prototype.obtieneDiv = function() {
 	// Crea un elemento HTML "div"
 	// TODO: Crear un elemento HTML "div"
+	this.div = document.createElement('div');
 	// Asigna el elemento creado a la propiedad "div"
 	// TODO: Asignar el elemento creado a la propiedad "div"
 	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
 	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
+	this.div.classList.add(this.constructor.name);
 	// Ejecuta el metodo "agregaSecciones"
 	// TODO: Ejecutar el metodo "agregaSecciones"
+	this.agregaSecciones();
 	// Devuelve la propiedad "div"
 	// TODO: Devolver la propiedad "div"
+	return this.div ;
 };
 pagina.prototype.agregaSecciones = function() {
 	console.group('Agregando secciones a pagina ' + this.id + '...');
