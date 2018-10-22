@@ -424,7 +424,7 @@ pregunta.prototype.obtieneDiv = function() {
 	this.div = document.createElement('div');
 	// Ejecuta el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
 	// TODO: Ejecutar el metodo "add" de la propiedad "classList" de la propiedad "div, enviando la clase como argumento
-	this.div.add.classList('pregunta');
+	this.div.classList.add('pregunta');
 	if (this.nombre) {
 		// Crea un elemento HTML "h3"
 		// TODO: Crear un elemento HTML "h3"
@@ -434,10 +434,10 @@ pregunta.prototype.obtieneDiv = function() {
 		var eTN = document.createTextNode(this.nombre);
 		// Agrega el elemento HTML TextNode al elemento HTML "h3"
 		// TODO: Agregar el elemento HTML TextNode al elemento HTML "h3"
-		eH3.appendChild(this.eTN);
+		eH3.appendChild(eTN);
 		// Agrega al elemento HTML "div" en la propiedad "div" el elemento HTML "h3"
 		// TODO: Agregar al elemento HTML "div" en la propiedad "div" el elemento HTML "h3"
-		this.div.div.appendChild(this.eH3);
+		this.div.appendChild(eH3);
 	}
 		// Crea un elemento HTML "div"
 		// TODO: Crear un elemento HTML "div"
