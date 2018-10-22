@@ -216,11 +216,13 @@ pagina.prototype.agregaSecciones = function() {
 };
 pagina.prototype.muestraDiv = function() {
 	console.log('Mostrando div de pagina ' + this.id + '...');
+	this.div.style.display = "block";
 	// Muestra el elemento HTML en la propiedad "div"
 	// TODO: Mostrar el elemento HTML en la propiedad "div"
 };
 pagina.prototype.ocultaDiv = function() {
 	console.log('Ocultando div de pagina ' + this.id + '...');
+	this.div.style.display = "none";
 	// Oculta el elemento HTML en la propiedad "div"
 	// TODO: Ocultar el elemento HTML en la propiedad "div"
 };
