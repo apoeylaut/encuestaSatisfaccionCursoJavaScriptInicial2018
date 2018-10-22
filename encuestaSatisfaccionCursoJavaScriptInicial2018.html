@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Encuesta Satisfaccion Curso JavaScript Inicial 2018</title>
+<script>
+var hEncuesta = {paginas: [{
+	secciones: [{
+		nombre: null
+		, preguntas: [{
+			nombre: 'Apellido y Nombre'
+			, tipo: 'text', obligatoria: false
+		}, {
+			nombre: '¿Cómo resultó el curso respecto a las expectativas que tenías?'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['No las alcanzó', 'Las alcanzó', 'Las superó']
+		}, {
+			nombre: '¿Cuál fue el motivo por el cual decidiste tomar esta capacitación?'
+			, tipo: 'text', obligatoria: true
+		}, {
+			nombre: '¿Te interesaría profundizar sobre este tema?'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['Si', 'No']
+		}]
+	}, {
+		nombre: 'Sobre la capacitación'
+		, preguntas: [{
+			nombre: '¿Qué opinión tenes respecto al material entregado durante el curso?'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['Malo', 'Bueno', 'Muy Bueno', 'Excelente']
+		}, {
+			nombre: '¿Qué opinión tenes respecto al nivel de práctica realizado durante el curso?'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['Malo', 'Bueno', 'Muy Bueno', 'Excelente']
+		}, {
+			nombre: '¿Crees que es necesario mejorar algo en el curso?'
+			, tipo: 'text', obligatoria: true
+		}]
+	}, {
+		nombre: 'Sobre el docente'
+		, preguntas: [{
+			nombre: '¿Cómo calificarías al docente en su capacidad para hacer los temas entendibles/relacionar los temas con la realidad/responder a las preguntas?'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['Malo', 'Bueno', 'Muy Bueno', 'Excelente']
+		}]
+	}, {
+		nombre: 'Sobre el equipamiento y condiciones edilicias'
+		, preguntas: [{
+			nombre: '¿Cuál es tu opinión sobre la infraestructura utilizada? (PC\'s, internet, software, proyector)'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['Mala', 'Normal', 'Buena', 'Muy Buena', 'Excelente']
+		}, {
+			nombre: '¿Cuál es tu opinión sobre las condiciones edilicias? (iluminación, sillas, escritorios)'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['Mala', 'Normal', 'Buena', 'Muy Buena', 'Excelente']
+		}]
+	}]
+}, {
+	secciones: [{
+		nombre: 'Sobre la organización en general'
+		, preguntas: [{
+			nombre: '¿Cómo calificarías la gestión administrativa/atención telefónica, respuesta a consultas y reclamos?'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['Malo', 'Normal', 'Bueno', 'Muy Bueno', 'Excelente']
+		}, {
+			nombre: '¿Hay alguna temática en la que te interese capacitarte?'
+			, tipo: 'text', obligatoria: false
+		}, {
+			nombre: '¿Cuán probable es que recomiendes la capacitación a tus amigos o colegas?'
+			, tipo: 'radio', obligatoria: true
+			, respuestas: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+		}, {
+			nombre: 'COMENTARIOS Y/O SUGERENCIAS'
+			, tipo: 'text', obligatoria: false
+		}]
+	}]
+}]};
+var oEncuesta;
+var idPregunta = 0;
+var idPagina = 0;
+function iniciaEncuesta() {
+	console.log('Iniciando encuesta...');
+	oEncuesta = new encuesta(hEncuesta);
+	oEncuesta.agregaPaginas();
+	oEncuesta.muestraPagina(0);
+}
+
+function encuesta(hEncuesta) {
+	this.div = document.getElementById('divEncuesta');
+	this.paginas = [];
+	for (var i = 0; i < hEncuesta.paginas.length; i++) {
+		this.paginas.push(new pagina(hEncuesta.paginas[i]));
+	}
+}
+encuesta.prototype.agregaPaginas = function() {
+	console.log('Agregando paginas...');
+	for (var i = 0; i < this.paginas.length; i++) {
+		this.div.appendChild(this.paginas[i].obtieneDiv());
+		if (i > 0) {
+			this.paginas[i].agregaBotonAnterior();
+		}
+		if (i < this.paginas.length - 1) {
+			this.paginas[i].agregaBotonSiguiente();
+		}
+		if (i == this.paginas.length - 1) {
+			this.paginas[i].agregaBotonFinalizar();
+		}
+	}
+};
+encuesta.prototype.muestraPagina = function(p) {
+	console.log('Mostrando pagina ' + p + '...');
+	for (var i = 0; i < this.paginas.length; i++) {
+		if (i == p) {
+			this.paginas[i].muestraDiv();
+		} else {
+			this.paginas[i].ocultaDiv();
+		}
+	}
+};
+function pagina(hPagina) {
+	var _this = this;
+	this.secciones = [];
+	for (var i = 0; i < hPagina.secciones.length; i++) {
+		this.secciones.push(new seccion(hPagina.secciones[i]));
+	}
+	this.id = idPagina;
+	idPagina++;
+}
+pagina.prototype.obtieneDiv = function() {
+	this.div = document.createElement('div');
+	this.div.classList.add(this.constructor.name);
+	this.agregaSecciones();
+	return this.div;
+};
+pagina.prototype.agregaSecciones = function() {
+	console.log('Agregando secciones a pagina ' + this.id + '...');
+	for (var i = 0; i < this.secciones.length; i++) {
+		this.div.appendChild(this.secciones[i].obtieneDiv());
+	}
+};
+pagina.prototype.muestraDiv = function() {
+	console.log('Mostrando div de pagina ' + this.id + '...');
+	this.div.style.display = 'block';
+};
+pagina.prototype.ocultaDiv = function() {
+	console.log('Ocultando div de pagina ' + this.id + '...');
+	this.div.style.display = 'none';
+};
+pagina.prototype.agregaBotonSiguiente = function() {
+	console.log('Agregando boton siguiente a pagina ' + this.id + '...');
+	var b = document.createElement('button');
+	b.appendChild(document.createTextNode('Siguiente'));
+	b.addEventListener('click', this.muestraSiguiente.bind(this), false);
+	this.div.appendChild(b);
+};
+pagina.prototype.agregaBotonAnterior = function() {
+	console.log('Agregando boton anterior a pagina ' + this.id + '...');
+	var b = document.createElement('button');
+	b.appendChild(document.createTextNode('Anterior'));
+	b.addEventListener('click', this.muestraAnterior.bind(this), false);
+	this.div.appendChild(b);
+};
+pagina.prototype.agregaBotonFinalizar = function() {
+	console.log('Agregando boton finalizar a pagina ' + this.id + '...');
+	var b = document.createElement('button');
+	b.appendChild(document.createTextNode('Finalizar'));
+	b.addEventListener('click', this.muestraFinal.bind(this), false);
+	this.div.appendChild(b);
+};
+pagina.prototype.muestraSiguiente = function() {
+	console.log('Mostrando pagina siguiente a ' + this.id + '...');
+	if (!this.valida()) {
+		return;
+	}
+	oEncuesta.muestraPagina(this.id + 1);
+};
+pagina.prototype.muestraFinal = function() {
+	console.log('Mostrando final...');
+	if (!this.valida()) {
+		return;
+	}
+	oEncuesta.muestraPagina(this.id + 1);
+	var h = document.createElement('h1');
+	h.appendChild(document.createTextNode('Gracias!'));
+	document.getElementById('divEncuesta').appendChild(h);
+};
+pagina.prototype.muestraAnterior = function() {
+	console.log('Mostrando pagina anterior a ' + this.id + '...');
+	oEncuesta.muestraPagina(this.id - 1);
+};
+pagina.prototype.valida = function() {
+	console.log('Validando pagina ' + this.id + '...');
+	var validado = true;
+	validado = validado && this.validaSecciones();
+	return validado;
+};
+pagina.prototype.validaSecciones = function() {
+	console.log('Validando secciones de pagina ' + this.id + '...');
+	var validado = true;
+	for (var i = 0; i < this.secciones.length; i++) {
+		if (!this.secciones[i].valida()) {
+			return false;
+		}
+	}
+	return validado;
+};
+function seccion(hSeccion) {
+	this.nombre = hSeccion.nombre;
+	this.preguntas = [];
+	for (var i = 0; i < hSeccion.preguntas.length; i++) {
+		this.preguntas.push(eval('new pregunta' + hSeccion.preguntas[i].tipo.substring(0, 1).toUpperCase() + hSeccion.preguntas[i].tipo.substring(1) + '(hSeccion.preguntas[i])'));
+	}
+}
+seccion.prototype.obtieneDiv = function() {
+	this.div = document.createElement('div');
+	this.div.classList.add(this.constructor.name);
+	if (this.nombre) {
+		var hNombre = document.createElement('h2');
+		hNombre.appendChild(document.createTextNode(this.nombre));
+		this.div.appendChild(hNombre)
+	}
+	this.agregaPreguntas();
+	return this.div;
+};
+seccion.prototype.agregaPreguntas = function() {
+	console.log('Agregando preguntas a seccion ' + this.nombre + '...');
+	for (var i = 0; i < this.preguntas.length; i++) {
+		this.div.appendChild(this.preguntas[i].obtieneDiv());
+	}
+};
+seccion.prototype.valida = function() {
+	console.log('Validando seccion ' + this.nombre + '...');
+	var validada = true;
+	for (var i = 0; i < this.preguntas.length; i++) {
+		if (!this.preguntas[i].valida()) {
+			return false;
+		}
+	}
+	return validada;
+};
+function pregunta(hPregunta) {
+	this.nombre = hPregunta.nombre;
+	this.tipo = hPregunta.tipo;
+	this.obligatoria = hPregunta.obligatoria;
+	this.id = idPregunta;
+	idPregunta++;
+}
+pregunta.prototype.obtieneDiv = function() {
+	this.div = document.createElement('div');
+	this.div.classList.add(this.constructor.name);
+	if (this.nombre) {
+		var hNombre = document.createElement('h3');
+		hNombre.appendChild(document.createTextNode(this.nombre));
+		this.div.appendChild(hNombre)
+	}
+	if (this.obligatoria) {
+		var d = document.createElement('div');
+		d.classList.add('obligatoria');
+		d.appendChild(document.createTextNode('*'));
+		this.div.appendChild(d);
+	}
+	this.agregaRespuestas();
+	return this.div;
+};
+pregunta.prototype.muestraValidez = function(v) {
+	console.log('Mosrando validez de pregunta ' + this.nombre + '...');
+	if (v) {
+		this.div.style.background = 'white'
+	} else {
+		this.div.style.background = 'red'
+	}
+};
+function preguntaText(hPregunta) {
+	pregunta.call(this, hPregunta);
+}
+preguntaText.prototype = Object.create(pregunta.prototype);
+preguntaText.prototype.constructor = preguntaText;
+
+preguntaText.prototype.agregaRespuestas = function() {
+	console.log('Agregando respuestas a pregunta ' + this.nombre + '...');
+	var d = document.createElement('div');
+	var t = document.createElement('input');
+	t.type = 'text';
+	t.addEventListener('change', this.valida.bind(this), false);
+	this.input = t;
+	d.appendChild(t);
+	this.div.appendChild(d);
+};
+preguntaText.prototype.valida = function() {
+	console.log('Validando pregunta ' + this.nombre + '...');
+	var validada = true;
+	if (this.obligatoria && this.input.value == '') {
+		validada = false;
+	}
+	this.muestraValidez(validada);
+	return validada;
+};
+
+function preguntaRadio(hPregunta) {
+	pregunta.call(this, hPregunta);
+	this.respuestas = [];
+	for (var i = 0; i < hPregunta.respuestas.length; i++) {
+		this.respuestas.push(hPregunta.respuestas[i]);
+	}
+}
+preguntaRadio.prototype = Object.create(pregunta.prototype);
+preguntaRadio.prototype.constructor = preguntaRadio;
+
+preguntaRadio.prototype.agregaRespuestas = function() {
+	console.log('Agregando respuestas a pregunta ' + this.nombre + '...');
+	for (var i = 0; i < this.respuestas.length; i++) {
+		var d = document.createElement('div');
+		d.classList.add('respuesta');
+		var r = document.createElement('input');
+		r.type = 'radio';
+		r.name = 'radioPregunta' + this.id;
+		r.addEventListener('change', this.valida.bind(this), false);
+		d.appendChild(r);
+		d.appendChild(document.createTextNode(this.respuestas[i]));
+		this.div.appendChild(d);
+	}
+};
+preguntaRadio.prototype.valida = function() {
+	console.log('Validando pregunta ' + this.nombre + '...');
+	var validada = false;
+	var aradio = this.div.querySelectorAll('input');
+	for (var i = 0; i < aradio.length; i++) {
+		validada = validada || aradio[i].checked;
+	}
+	this.muestraValidez(validada);
+	return validada;
+};
+</script>
+<style>
+.respuesta {
+	//float: left;
+}
+.obligatoria {
+	color: red;
+}
+</style>
+</head>
+<body onLoad="iniciaEncuesta()">
+<h1>Encuesta Satisfaccion Curso JavaScript Inicial 2018</h1>
+<div id="divEncuesta">
+</div>
+</body>
+</html>
