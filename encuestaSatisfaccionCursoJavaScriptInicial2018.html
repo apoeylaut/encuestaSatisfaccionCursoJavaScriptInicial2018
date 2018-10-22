@@ -291,18 +291,24 @@ pagina.prototype.validaSecciones = function() {
 	var validado = true;
 	// Itera por los elementos en el arreglo en la propiedad "secciones"
 	// TODO: Iterar por los elementos en el arreglo en la propiedad "secciones"
+	for(var i = 0; i < this.secciones.length; i++){	
 		// Ejecuta el metodo "valida" por cada elemento iterado
 		// TODO: Ejecutar el metodo "valida" por cada elemento iterado
+		
 		if (typeof i !== 'undefined') {
 			if (!this.secciones[i].valida()) {
 				console.groupEnd('Validando secciones de pagina ' + this.id + '...');
 				// Deuelve "false" si el resultado del metodo es "false"
 				// TODO: Devolver "false" si el resultado del metodo es "false"
+				return false;
 			}
+			
 		}
 	console.groupEnd('Validando secciones de pagina ' + this.id + '...');
 	// Devuelve "true"
 	// TODO: Devolver "true"
+	return true;
+	}
 };
 
 // Objeto seccion
