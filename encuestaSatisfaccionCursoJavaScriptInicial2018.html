@@ -397,12 +397,16 @@ function pregunta(hPregunta) {
 	this.nombre = hPregunta.nombre;
 	// Asigna a la propiedad "tipo" el valor en la propiedad "tipo" del argumento recibido
 	// TODO: Asignar a la propiedad "tipo" el valor en la propiedad "tipo" del argumento recibido
+	this.tipo = hPregunta.tipo;
 	// Asigna a la propiedad "obligatoria" el valor en la propiedad "obligatoria" del argumento recibido
 	// TODO: Asignar a la propiedad "obligatoria" el valor en la propiedad "obligatoria" del argumento recibido
+	this.obligatoria = hPregunta.obligatoria;
 	// Asigna a la propiedad "id" el valor de la variable global "idPregunta"
 	// TODO: Asignar a la propiedad "id" el valor de la variable global "idPregunta"
+	this.id = idPregunta;
 	// Incrementa el valor de la variable global "idPregunta"
 	// TODO: Incrementar el valor de la variable global "idPregunta"
+	idPregunta++;
 }
 pregunta.prototype.obtieneDiv = function() {
 	// Crea un elemento HTML "div"
